@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote Results</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="results-container">
+    <div class="vote-header">
+      <h1 class="vote-title">Cast Your Vote</h1>
+      <p class="vote-subtitle" id="thanksMsg">Thank you for voting!</p>
+    </div>
+
+    <div class="result-card yes">
+      <div class="result-card-top">
+        <div class="left">
+          <span class="icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="result-label">YES</span>
+        </div>
+        <div class="right">
+          <div class="percent" id="yesPercent">0.0%</div>
+          <div class="votes" id="yesVotes">0 votes</div>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="yesBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="result-card no">
+      <div class="result-card-top">
+        <div class="left">
+          <span class="icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M18 6L6 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="result-label">NO</span>
+        </div>
+        <div class="right">
+          <div class="percent" id="noPercent">0.0%</div>
+          <div class="votes" id="noVotes">0 votes</div>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="noBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="total-row">
+      <span>Total votes: <strong id="totalVotes">0</strong></span>
+      <a class="back-link" href="index.html">Back</a>
+    </div>
+  </div>
+
+  <script src="results.js"></script>
+</body>
+</html>

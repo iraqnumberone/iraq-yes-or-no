@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Naskh Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease, background-color 0.4s ease;
+}
+
+.voting-container {
+    text-align: center;
+    color: #0f1d2e;
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px 24px;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.vote-header {
+    margin-bottom: 48px;
+}
+
+.flag-img {
+    display: block;
+    margin: 0 auto 16px auto; /* centered, with space below */
+    width: 120px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.vote-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+    color: #0f1d2e;
+    line-height: 1.15;
+}
+
+.vote-subtitle {
+    color: rgba(0,0,0,0.6);
+    font-size: 1.05rem;
+}
+
+/* Results page */
+.results-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    color: #0f1d2e;
+}
+
+.result-card {
+    background: #f3f5f8;
+    border-radius: 18px;
+    padding: 22px 22px 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    margin-bottom: 22px;
+}
+
+.result-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.result-card-top .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.result-label {
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+/* Results view: YES uses filled green circle like NO */
+.result-card.yes .icon-badge {
+    background: #0ea564;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.12);
+}
+
+/* Results view: NO keeps red filled circle */
+.result-card.no .icon-badge {
+    background: #e3365c; /* solid red */
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.result-card .right { text-align: right; }
+.result-card .percent { font-weight: 800; font-size: 1.4rem; color: #0f1d2e; }
+.result-card .votes { opacity: 0.65; font-size: 0.95rem; color: #334155; }
+
+.progress-wrap {
+    width: 100%;
+    height: 12px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+.result-card.yes .progress-bar {
+    background: linear-gradient(90deg, #1fbf75, #0ea564);
+}
+.result-card.no .progress-bar {
+    background: linear-gradient(90deg, #ff4b6e, #e3365c);
+}
+
+.total-row {
+    text-align: center;
+    margin-top: 14px;
+    opacity: 0.85;
+}
+
+.back-link {
+    margin-left: 12px;
+    color: #2563eb;
+    text-decoration: none;
+}
+.back-link:hover { text-decoration: underline; }
+
+.vote-options {
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.vote-btn {
+    position: relative;
+    width: 360px;
+    height: 200px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    color: #fff;
+}
+
+.vote-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+}
+
+.vote-btn:active {
+    transform: translateY(-2px) scale(0.99);
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #1fbf75 0%, #0ea564 100%);
+}
+
+.yes-btn:hover {
+    filter: brightness(1.03);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #ff4b6e 0%, #e3365c 100%);
+}
+
+.no-btn:hover {
+    filter: brightness(1.03);
+}
+
+.btn-label { font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; }
+
+.icon-badge {
+    display: grid;
+    place-items: center;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(2px);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.btn-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.vote-btn:active .btn-ripple {
+    width: 800px;
+    height: 800px;
+}
+
+/* Selected state intentionally has no visual change on buttons */
+
+/* White-screen mode: make the entire screen pure white */
+body.white-screen {
+    background: #ffffff !important;
+}
+body.white-screen .vote-title { color: #0f1d2e; text-shadow: none; }
+body.white-screen .vote-subtitle { color: rgba(0,0,0,0.6); }
+
+/* Stats hidden in this mock */
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Video Modal Styles */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.video-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    transform: scale(0.7);
+    opacity: 0;
+    animation: modalZoomIn 0.5s ease-out 0.2s forwards;
+}
+
+.video-modal-header {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    z-index: 10001;
+}
+
+.close-video-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-video-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.video-container {
+    position: relative;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    display: block;
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalZoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive video modal */
+@media (max-width: 768px) {
+    .video-modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .video-container video {
+        max-height: 70vh;
+    }
+
+    .close-video-btn {
+        font-size: 1.5rem;
+        width: 35px;
+        height: 35px;
+    }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تصويت لإعادة مباراة العراق ضد السعودية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="voting-container">
+        <div class="vote-header" id="mainHeader">
+            <img class="flag-img" src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Iraq.svg" alt="Iraq flag" width="120" height="80" loading="lazy">
+            <h1 class="vote-title">تصويت لإعادة مباراة العراق ضد السعودية</h1>
+            <p class="vote-subtitle">Make your choice</p>
+        </div>
+        
+        <div class="vote-options" id="voteOptions">
+            <button class="vote-btn yes-btn" id="yesBtn">
+                <span class="icon-badge">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="btn-label">YES</span>
+                <div class="btn-ripple"></div>
+            </button>
+            
+            <button class="vote-btn no-btn" id="noBtn">
+                <span class="icon-badge">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M18 6L6 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="btn-label">NO</span>
+                <div class="btn-ripple"></div>
+            </button>
+        </div>
+
+        <!-- Inline results section (hidden until vote) -->
+        <div id="resultsView" class="results-container" style="display:none" aria-hidden="true">
+            <div class="vote-header">
+                <img class="flag-img" src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Iraq.svg" alt="Iraq flag" width="120" height="80" loading="lazy">
+                <h1 class="vote-title">تصويت لإعادة مباراة العراق ضد السعودية</h1>
+                <p class="vote-subtitle" id="thanksMsg">Thank you for voting!</p>
+            </div>
+
+            <div class="result-card yes">
+                <div class="result-card-top">
+                    <div class="left">
+                        <span class="icon-badge">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="result-label">YES</span>
+                    </div>
+                    <div class="right">
+                        <div class="percent" id="yesPercent">0.0%</div>
+                        <div class="votes" id="yesVotes">0 votes</div>
+                    </div>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-bar" id="yesBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="result-card no">
+                <div class="result-card-top">
+                    <div class="left">
+                        <span class="icon-badge">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M18 6L6 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="result-label">NO</span>
+                    </div>
+                    <div class="right">
+                        <div class="percent" id="noPercent">0.0%</div>
+                        <div class="votes" id="noVotes">0 votes</div>
+                    </div>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-bar" id="noBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="total-row">
+                <span>Total votes: <strong id="totalVotes">0</strong></span>
+            </div>
+        </div>
+
+        <!-- Video Modal (hidden until timer ends) -->
+        <div id="videoModal" class="video-modal" style="display: none;">
+            <div class="video-modal-content">
+                <div class="video-modal-header">
+                    <button id="closeVideoModal" class="close-video-btn">&times;</button>
+                </div>
+                <div class="video-container">
+                    <video id="randomVideo" controls autoplay>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
