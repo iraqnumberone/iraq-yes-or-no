@@ -176,7 +176,7 @@ class VotingApp {
             this.resultsView.appendChild(this.timerDisplay);
         }
 
-        let countdown = 3; // 3 seconds countdown
+        let countdown = 1; // 1 second countdown
         this.timerDisplay.textContent = `سيظهر فيديو خلال ${countdown} ثوان...`;
 
         this.countdownInterval = setInterval(() => {
@@ -186,10 +186,8 @@ class VotingApp {
             } else {
                 this.timerDisplay.textContent = 'جاري تحميل الفيديو...';
                 clearInterval(this.countdownInterval);
-                // Show random video after countdown
-                setTimeout(() => {
-                    this.showRandomVideo();
-                }, 1000);
+                // Show random video immediately
+                this.showRandomVideo();
             }
         }, 1000);
     }
